@@ -20,6 +20,9 @@
   ],
   "author": "Rakesh (252U1R1207)",
   "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "express": "^4.19.2",
     "sqlite": "^5.1.1",

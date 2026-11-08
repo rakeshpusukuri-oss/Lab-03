@@ -71,6 +71,24 @@ async function initializeDBAndServer() {
 // RESTful Endpoints
 // ---------------------------------------------------------------------
 
+// Root landing route for health-check and cloud deployment verification
+app.get("/", (request, response) => {
+  response.status(200).json({
+    message: "Welcome to Lab 3: REST API with SQLite & Express",
+    student: "Rakesh (252U1R1207)",
+    section: "CSE-2D",
+    faculty: "Sai Siva Teja",
+    endpoints: {
+      get_all_books: "/books/",
+      search_example: "/books/?search_q=code",
+      filter_example: "/books/?min_price=600&max_price=800",
+      sort_example: "/books/?order_by=price&order=DESC",
+      pagination_example: "/books/?limit=3&offset=0",
+      single_book_example: "/books/1/"
+    }
+  });
+});
+
 /**
  * 1. GET /books/
  * Query parameters:
