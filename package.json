@@ -1,0 +1,31 @@
+{
+  "name": "lab-03-rest-api",
+  "version": "1.0.0",
+  "description": "Lab 3: REST API, query parameters, validation, debugging",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node database.js",
+    "test": "node run-tests.js"
+  },
+  "keywords": [
+    "express",
+    "sqlite",
+    "sqlite3",
+    "rest-api",
+    "query-parameters",
+    "validation",
+    "debugging"
+  ],
+  "author": "Rakesh (252U1R1207)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

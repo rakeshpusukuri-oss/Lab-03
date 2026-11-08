@@ -1,0 +1,267 @@
+{
+  "info": {
+    "name": "Lab 3 - REST API, Query Parameters & Validation",
+    "description": "Postman Collection covering all success and failure cases for Lab 3",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. GET All Books (Default Query)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""]
+        }
+      }
+    },
+    {
+      "name": "2. GET Search by Title (?search_q=code)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?search_q=code",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""],
+          "query": [
+            { "key": "search_q", "value": "code" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. GET Price Filter (?min_price=600&max_price=800)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?min_price=600&max_price=800",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""],
+          "query": [
+            { "key": "min_price", "value": "600" },
+            { "key": "max_price", "value": "800" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. GET Sort by Price Descending (?order_by=price&order=DESC)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?order_by=price&order=DESC",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""],
+          "query": [
+            { "key": "order_by", "value": "price" },
+            { "key": "order", "value": "DESC" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. GET Pagination Page 2 (?limit=3&offset=3)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?limit=3&offset=3",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""],
+          "query": [
+            { "key": "limit", "value": "3" },
+            { "key": "offset", "value": "3" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "6. GET Invalid Sort Column (400 Bad Request Check)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/?order_by=invalid_column",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""],
+          "query": [
+            { "key": "order_by", "value": "invalid_column" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "7. GET Single Book By ID (/books/1/)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/1/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "1", ""]
+        }
+      }
+    },
+    {
+      "name": "8. GET Non-Existent Book (404 Not Found Check)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/9999/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "9999", ""]
+        }
+      }
+    },
+    {
+      "name": "9. POST Add Book - Success (201 Created)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Clean Architecture\",\n  \"author\": \"Robert C. Martin\",\n  \"price\": 680,\n  \"pages\": 432\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""]
+        }
+      }
+    },
+    {
+      "name": "10. POST Add Book - Missing Author (400 Bad Request)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Incomplete Book\",\n  \"price\": 500,\n  \"pages\": 200\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""]
+        }
+      }
+    },
+    {
+      "name": "11. POST Add Book - Non-Numeric Price (400 Bad Request)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test Book\",\n  \"author\": \"Test Author\",\n  \"price\": \"free\",\n  \"pages\": 200\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", ""]
+        }
+      }
+    },
+    {
+      "name": "12. PUT Update Book - Success (200 OK)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Clean Architecture: A Craftsman's Guide\",\n  \"author\": \"Robert C. Martin\",\n  \"price\": 750,\n  \"pages\": 432\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/11/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "11", ""]
+        }
+      }
+    },
+    {
+      "name": "13. PUT Update Non-Existent Book (404 Not Found)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Ghost Book\",\n  \"author\": \"Nobody\",\n  \"price\": 500,\n  \"pages\": 100\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/books/9999/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "9999", ""]
+        }
+      }
+    },
+    {
+      "name": "14. DELETE Book - Success (200 OK)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/11/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "11", ""]
+        }
+      }
+    },
+    {
+      "name": "15. DELETE Non-Existent Book (404 Not Found)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/books/9999/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["books", "9999", ""]
+        }
+      }
+    }
+  ]
+}
