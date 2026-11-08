@@ -1,7 +1,7 @@
 # Lab 3: REST API, query parameters, validation, debugging
 
 **Name:** Rakesh · **Registration Number:** 252U1R1207 · **Section:** CSE-2D  
-**Course:** Backend Development Fundamentals (Year II Term II • Aurora) · **Faculty:** Joel Prashanth D
+**Course:** Backend Development Fundamentals (Year II Term II • Aurora) · **Faculty:** Sai Siva Teja
 
 ---
 
